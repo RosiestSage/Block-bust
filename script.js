@@ -53,11 +53,10 @@ function drop(ev) {
         holder.appendChild(item);   
         holder.innerHTML = "";
         holder.innerHTML = '<div class="pakolo" draggable="false"> </div>'; 
-        
+        console.log(holder.id)
         //hol van
         field[parseInt(holder.id / 8)][(parseFloat(holder.id / 8) - parseInt(holder.id / 8)) * 8] = true;
 
-        console.log(field);
         //pont-e?
         let beszinezve = 0;
         let index = [];
@@ -73,10 +72,16 @@ function drop(ev) {
             beszinezve = 0;
         }
         for (let k = 0; k < index.length; k++){
+            let id = 0;
             for (let m = 0; m < 8; m++){
-                document.getElementById(field[index[i] ]);
+                //visszafejteni id-re, 0,125-el nő
+                document.getElementById(index[k] * 8 + id * 8).innerHTML = "";
+                field[index[k]][id * 8] = false;
+                id += 0.125
             }
         }
+        index = []
+
     
     
     
